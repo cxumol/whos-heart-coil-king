@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://cg5b7wqpksgvw"]
+
+[ext_resource type="Script" path="res://src/scene/menu/transition_menu.gd" id="1_2nnd1"]
+[ext_resource type="Texture2D" uid="uid://cj70q1a7obtp1" path="res://asset/background/邪祟祈祷中_315b44c1-3e31-436e-8f96-447af3bc7eae.jpg" id="1_npxma"]
+[ext_resource type="Theme" uid="uid://dkyw0xjrwcyub" path="res://src/ui_theme.tres" id="2_7224j"]
+[ext_resource type="Texture2D" uid="uid://cervxwhiom7pa" path="res://asset/icon/arrowLeft.png" id="3_5d5pk"]
+
+[node name="TransitionMenu" type="CanvasLayer"]
+script = ExtResource("1_2nnd1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(639, 488)
+scale = Vector2(1.28223, 1.28223)
+texture = ExtResource("1_npxma")
+
+[node name="menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_7224j")
+
+[node name="Panel" type="PanelContainer" parent="menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="menu/Panel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="menu/Panel/MarginContainer"]
+layout_mode = 2
+text = "邪祟祈祷中
+	NowLoading
+
+(暂无联机
+可以前往校场 PVE)"
+horizontal_alignment = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="menu"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -78.0
+offset_right = 268.0
+grow_vertical = 0
+
+[node name="btn_back" type="Button" parent="menu/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "时间线回溯"
+icon = ExtResource("3_5d5pk")
+
+[connection signal="pressed" from="menu/MarginContainer/btn_back" to="." method="_on_btn_back_pressed"]

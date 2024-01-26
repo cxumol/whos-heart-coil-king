@@ -1,0 +1,198 @@
+[gd_scene load_steps=9 format=3 uid="uid://bf4hsdjuqd33j"]
+
+[ext_resource type="Script" path="res://src/scene/menu/init_menu.gd" id="1_imjy6"]
+[ext_resource type="Theme" uid="uid://dkyw0xjrwcyub" path="res://src/ui_theme.tres" id="1_j0knk"]
+[ext_resource type="Texture2D" uid="uid://bq0caug01nii1" path="res://asset/background/白玉京_58e9dfd5-c3d9-4b58-a852-5187f1f2e1ee.jpg" id="1_x1yjv"]
+[ext_resource type="Texture2D" uid="uid://cc3sxbjns8fm1" path="res://asset/icon/multiplayer.png" id="3_q68nv"]
+[ext_resource type="Texture2D" uid="uid://cdhplqvteuo2l" path="res://asset/icon/singleplayer.png" id="4_407bs"]
+[ext_resource type="Texture2D" uid="uid://bwbrk751xb2te" path="res://asset/icon/exitLeft.png" id="5_mluwa"]
+[ext_resource type="Texture2D" uid="uid://birf16mf5dw7a" path="res://asset/icon/gear.png" id="6_wpeis"]
+[ext_resource type="Texture2D" uid="uid://cervxwhiom7pa" path="res://asset/icon/arrowLeft.png" id="7_u7ffm"]
+
+[node name="InitMenu" type="CanvasLayer"]
+script = ExtResource("1_imjy6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(633, 374)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("1_x1yjv")
+
+[node name="menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_j0knk")
+
+[node name="Panel" type="Panel" parent="menu"]
+custom_minimum_size = Vector2(800, 600)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxC_default" type="VBoxContainer" parent="menu/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="menu/Panel/VBoxC_default"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="menu/Panel/VBoxC_default/MarginContainer"]
+layout_mode = 2
+text = "谁是超级心蟠王? "
+horizontal_alignment = 1
+
+[node name="MarginContainer4" type="MarginContainer" parent="menu/Panel/VBoxC_default"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+
+[node name="SiMing_name" type="Label" parent="menu/Panel/VBoxC_default"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "你好: "
+
+[node name="MarginContainer2" type="MarginContainer" parent="menu/Panel/VBoxC_default"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+
+[node name="Label" type="Label" parent="menu/Panel/VBoxC_default/MarginContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "龙脉越少, 时间越快, 过节过年越多｡ 白玉京的小伙伴们, 你是否还在节假日无所事事? 让我们一起穿越牦之门, 驾驶最爱的心蟠, 来几场酣畅淋漓的战斗吧!"
+vertical_alignment = 3
+autowrap_mode = 3
+
+[node name="MarginContainer3" type="MarginContainer" parent="menu/Panel/VBoxC_default"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="menu/Panel/VBoxC_default/MarginContainer3"]
+layout_mode = 2
+
+[node name="btn_game_pvp" type="Button" parent="menu/Panel/VBoxC_default/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+text = "牦之门"
+icon = ExtResource("3_q68nv")
+
+[node name="btn_game_pve" type="Button" parent="menu/Panel/VBoxC_default/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+text = "牦之门(校场)"
+icon = ExtResource("4_407bs")
+
+[node name="btn_game_exit" type="Button" parent="menu/Panel/VBoxC_default/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+text = "出院"
+icon = ExtResource("5_mluwa")
+
+[node name="btn_game_setting" type="Button" parent="menu/Panel/VBoxC_default/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+text = "老黄历"
+icon = ExtResource("6_wpeis")
+
+[node name="VBoxC_settings" type="VBoxContainer" parent="menu/Panel"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="title-MarginContainer" type="MarginContainer" parent="menu/Panel/VBoxC_settings"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Label" type="Label" parent="menu/Panel/VBoxC_settings/title-MarginContainer"]
+layout_mode = 2
+text = "老黄历"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="menu/Panel/VBoxC_settings"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="menu/Panel/VBoxC_settings/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="menu/Panel/VBoxC_settings/HBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "司命名字"
+
+[node name="MarginContainer2" type="MarginContainer" parent="menu/Panel/VBoxC_settings/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="edit_SiMing_name" type="LineEdit" parent="menu/Panel/VBoxC_settings/HBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "你是……? "
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="menu/Panel/VBoxC_settings"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+
+[node name="MarginContainer2" type="MarginContainer" parent="menu/Panel/VBoxC_settings/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CheckButton" type="CheckButton" parent="menu/Panel/VBoxC_settings/HBoxContainer2/MarginContainer2"]
+layout_mode = 2
+disabled = true
+text = "声效"
+icon_alignment = 2
+expand_icon = true
+
+[node name="MarginContainer3" type="MarginContainer" parent="menu/Panel/VBoxC_settings/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CheckButton" type="CheckButton" parent="menu/Panel/VBoxC_settings/HBoxContainer2/MarginContainer3"]
+layout_mode = 2
+disabled = true
+text = "乐曲"
+icon_alignment = 2
+expand_icon = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="menu/Panel/VBoxC_settings"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+
+[node name="btn_game_setting_back" type="Button" parent="menu/Panel/VBoxC_settings/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "写好了"
+icon = ExtResource("7_u7ffm")
+
+[node name="Data" type="Node" parent="."]
+
+[connection signal="pressed" from="menu/Panel/VBoxC_default/MarginContainer3/VBoxContainer/btn_game_pvp" to="." method="_on_btn_game_pvp_pressed"]
+[connection signal="pressed" from="menu/Panel/VBoxC_default/MarginContainer3/VBoxContainer/btn_game_pve" to="." method="_on_btn_game_pve_pressed"]
+[connection signal="pressed" from="menu/Panel/VBoxC_default/MarginContainer3/VBoxContainer/btn_game_exit" to="." method="_on_btn_game_exit_pressed"]
+[connection signal="pressed" from="menu/Panel/VBoxC_default/MarginContainer3/VBoxContainer/btn_game_setting" to="." method="_on_btn_game_setting_pressed"]
+[connection signal="text_changed" from="menu/Panel/VBoxC_settings/HBoxContainer/MarginContainer2/edit_SiMing_name" to="." method="_on_edit_si_ming_name_text_changed"]
+[connection signal="pressed" from="menu/Panel/VBoxC_settings/MarginContainer2/btn_game_setting_back" to="." method="_on_btn_game_setting_back_pressed"]

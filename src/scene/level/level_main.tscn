@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=3 uid="uid://kh82dmuqkeoc"]
+
+[ext_resource type="Script" path="res://src/scene/level/level_main.gd" id="1_wkslw"]
+[ext_resource type="Texture2D" uid="uid://daxkyotxfbo2n" path="res://asset/background/lvlbg_清风观_.jpg" id="2_yh8d3"]
+[ext_resource type="PackedScene" uid="uid://c5x5h7bjgmb8u" path="res://src/character/pc.tscn" id="3_cftad"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6lqep"]
+distance = -370.59
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_15jre"]
+normal = Vector2(-1, 0)
+distance = -620.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_swtlk"]
+normal = Vector2(1, 0)
+distance = -660.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mb3bb"]
+size = Vector2(1329, 16)
+
+[node name="LevelMain" type="Node"]
+script = ExtResource("1_wkslw")
+
+[node name="Background" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("2_yh8d3")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Timer" type="Label" parent="HUD"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="PC1" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HPBar" type="TextureProgressBar" parent="HUD/PC1"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="MP1Bar" type="TextureProgressBar" parent="HUD/PC1"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="MP2Bar" type="TextureProgressBar" parent="HUD/PC1"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="PhysicalEnv" type="Node" parent="."]
+
+[node name="walls" type="StaticBody2D" parent="PhysicalEnv"]
+collision_layer = 3
+collision_mask = 0
+
+[node name="ground" type="CollisionShape2D" parent="PhysicalEnv/walls"]
+position = Vector2(19, -9)
+shape = SubResource("WorldBoundaryShape2D_6lqep")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="wall_left" type="CollisionShape2D" parent="PhysicalEnv/walls"]
+position = Vector2(19, -9)
+shape = SubResource("WorldBoundaryShape2D_15jre")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="wall_right" type="CollisionShape2D" parent="PhysicalEnv/walls"]
+position = Vector2(19, -9)
+shape = SubResource("WorldBoundaryShape2D_swtlk")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicalEnv/walls"]
+visible = false
+position = Vector2(0.5, 352)
+shape = SubResource("RectangleShape2D_mb3bb")
+disabled = true
+
+[node name="PC1" parent="." node_paths=PackedStringArray("opponent") instance=ExtResource("3_cftad")]
+position = Vector2(-315, 132)
+opponent = NodePath("../PC2")
+
+[node name="PC2" parent="." node_paths=PackedStringArray("opponent") instance=ExtResource("3_cftad")]
+position = Vector2(315, 132)
+opponent = NodePath("../PC1")

@@ -1,0 +1,273 @@
+[gd_scene load_steps=18 format=3 uid="uid://cqurdwbsv6n2e"]
+
+[ext_resource type="Script" path="res://src/scene/menu/level_setup.gd" id="1_1b71c"]
+[ext_resource type="Theme" uid="uid://dkyw0xjrwcyub" path="res://src/ui_theme.tres" id="1_asetg"]
+[ext_resource type="Texture2D" uid="uid://bgbpt8adwbvg1" path="res://asset/border/panel-border-002.png" id="1_l3cr6"]
+[ext_resource type="Texture2D" uid="uid://cj1qsf40e0mu8" path="res://asset/banner/banner_红中李火旺_N9tIr3VkjLwiE1flvhApM.png" id="3_2xnfb"]
+[ext_resource type="Texture2D" uid="uid://cfnop32ny00t" path="res://asset/border/panel-border-009.png" id="3_ta738"]
+[ext_resource type="Texture2D" uid="uid://cervxwhiom7pa" path="res://asset/icon/arrowLeft.png" id="3_vl3iq"]
+[ext_resource type="Texture2D" uid="uid://daxkyotxfbo2n" path="res://asset/background/QingfengGuan-medicinal_room.jpg" id="4_66f5x"]
+[ext_resource type="Texture2D" uid="uid://c1o5hx8aq5ai1" path="res://asset/banner/banner_李火旺_N9tIr3VkjLwiE1flvhApM.png" id="4_cjlud"]
+[ext_resource type="Texture2D" uid="uid://pr73hskxb3eb" path="res://asset/icon/arrowRight.png" id="4_np665"]
+[ext_resource type="Texture2D" uid="uid://452530ii7gr3" path="res://asset/background/青丘_winxp_Bliss_HQ.jpg" id="7_rbv2b"]
+[ext_resource type="Script" path="res://src/scene/menu/level_setup_PC1Container.gd" id="8_ub374"]
+[ext_resource type="Texture2D" uid="uid://bwbrk751xb2te" path="res://asset/icon/exitLeft.png" id="9_y5fh5"]
+[ext_resource type="Texture2D" uid="uid://dwam34vk7i7u" path="res://asset/icon/checkmark.png" id="10_kjcei"]
+[ext_resource type="Script" path="res://src/scene/menu/level_setup_MapSelectionContainer.gd" id="11_01fab"]
+[ext_resource type="Script" path="res://src/scene/menu/level_setup_PC2Container.gd" id="11_km1uy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oognj"]
+atlas = ExtResource("4_cjlud")
+region = Rect2(0, 0, 1260, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3132"]
+atlas = ExtResource("7_rbv2b")
+region = Rect2(0, 520, 1260, 190)
+
+[node name="LevelSetup" type="Node2D"]
+script = ExtResource("1_1b71c")
+CharacterBannersRaw = Array[Texture2D]([ExtResource("4_cjlud"), ExtResource("3_2xnfb")])
+MapBannersRaw = Array[Texture2D]([ExtResource("7_rbv2b"), ExtResource("4_66f5x")])
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="menu" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_asetg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PC1Container" type="NinePatchRect" parent="CanvasLayer/menu/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_l3cr6")
+patch_margin_left = 36
+patch_margin_top = 36
+patch_margin_right = 36
+patch_margin_bottom = 36
+script = ExtResource("8_ub374")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/menu/VBoxContainer/PC1Container"]
+layout_mode = 0
+offset_right = 60.0
+offset_bottom = 20.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="TextureRectBackground" type="TextureRect" parent="CanvasLayer/menu/VBoxContainer/PC1Container/MarginContainer"]
+clip_contents = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_oognj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/menu/VBoxContainer/PC1Container/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/menu/VBoxContainer/PC1Container/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/menu/VBoxContainer/PC1Container/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Label" type="Label" parent="CanvasLayer/menu/VBoxContainer/PC1Container/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "player1_name"
+
+[node name="PC1_lable" type="Label" parent="CanvasLayer/menu/VBoxContainer/PC1Container/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "character_name"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/menu/VBoxContainer/PC1Container/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="to_left" type="Button" parent="CanvasLayer/menu/VBoxContainer/PC1Container/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 6
+icon = ExtResource("3_vl3iq")
+
+[node name="to_right" type="Button" parent="CanvasLayer/menu/VBoxContainer/PC1Container/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 6
+icon = ExtResource("4_np665")
+
+[node name="MapSelectionContainer" type="NinePatchRect" parent="CanvasLayer/menu/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_l3cr6")
+patch_margin_left = 36
+patch_margin_top = 36
+patch_margin_right = 36
+patch_margin_bottom = 36
+script = ExtResource("11_01fab")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/menu/VBoxContainer/MapSelectionContainer"]
+layout_mode = 0
+offset_right = 60.0
+offset_bottom = 20.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="TextureRectBackground" type="TextureRect" parent="CanvasLayer/menu/VBoxContainer/MapSelectionContainer/MarginContainer"]
+clip_contents = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_n3132")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/menu/VBoxContainer/MapSelectionContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/menu/VBoxContainer/MapSelectionContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/menu/VBoxContainer/MapSelectionContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Label" type="Label" parent="CanvasLayer/menu/VBoxContainer/MapSelectionContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "player1_name"
+
+[node name="PC1_lable" type="Label" parent="CanvasLayer/menu/VBoxContainer/MapSelectionContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "character_name"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/menu/VBoxContainer/MapSelectionContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="to_left" type="Button" parent="CanvasLayer/menu/VBoxContainer/MapSelectionContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 6
+icon = ExtResource("3_vl3iq")
+
+[node name="to_right" type="Button" parent="CanvasLayer/menu/VBoxContainer/MapSelectionContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 6
+icon = ExtResource("4_np665")
+
+[node name="PC2Container" type="NinePatchRect" parent="CanvasLayer/menu/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_l3cr6")
+patch_margin_left = 36
+patch_margin_top = 36
+patch_margin_right = 36
+patch_margin_bottom = 36
+script = ExtResource("11_km1uy")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/menu/VBoxContainer/PC2Container"]
+layout_mode = 0
+offset_right = 60.0
+offset_bottom = 20.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="TextureRectBackground" type="TextureRect" parent="CanvasLayer/menu/VBoxContainer/PC2Container/MarginContainer"]
+clip_contents = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_oognj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/menu/VBoxContainer/PC2Container/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/menu/VBoxContainer/PC2Container/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/menu/VBoxContainer/PC2Container/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Label" type="Label" parent="CanvasLayer/menu/VBoxContainer/PC2Container/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "player1_name"
+
+[node name="PC1_lable" type="Label" parent="CanvasLayer/menu/VBoxContainer/PC2Container/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "character_name"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/menu/VBoxContainer/PC2Container/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="to_left" type="Button" parent="CanvasLayer/menu/VBoxContainer/PC2Container/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 6
+icon = ExtResource("3_vl3iq")
+
+[node name="to_right" type="Button" parent="CanvasLayer/menu/VBoxContainer/PC2Container/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 6
+icon = ExtResource("4_np665")
+
+[node name="BottomBar" type="NinePatchRect" parent="CanvasLayer/menu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("3_ta738")
+draw_center = false
+patch_margin_left = 36
+patch_margin_top = 36
+patch_margin_right = 36
+patch_margin_bottom = 36
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/menu/VBoxContainer/BottomBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -25.5
+offset_right = 640.0
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="to_back" type="Button" parent="CanvasLayer/menu/VBoxContainer/BottomBar/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+icon = ExtResource("9_y5fh5")
+
+[node name="Info" type="Label" parent="CanvasLayer/menu/VBoxContainer/BottomBar/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 18
+text = "character_name"
+
+[node name="to_right" type="Button" parent="CanvasLayer/menu/VBoxContainer/BottomBar/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+icon = ExtResource("10_kjcei")
+
+[connection signal="pressed" from="CanvasLayer/menu/VBoxContainer/PC1Container/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2/to_left" to="CanvasLayer/menu/VBoxContainer/PC1Container" method="_on_to_left_pressed"]
+[connection signal="pressed" from="CanvasLayer/menu/VBoxContainer/PC1Container/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2/to_right" to="CanvasLayer/menu/VBoxContainer/PC1Container" method="_on_to_right_pressed"]
+[connection signal="pressed" from="CanvasLayer/menu/VBoxContainer/MapSelectionContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2/to_left" to="CanvasLayer/menu/VBoxContainer/MapSelectionContainer" method="_on_to_left_pressed"]
+[connection signal="pressed" from="CanvasLayer/menu/VBoxContainer/MapSelectionContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2/to_right" to="CanvasLayer/menu/VBoxContainer/MapSelectionContainer" method="_on_to_right_pressed"]
+[connection signal="pressed" from="CanvasLayer/menu/VBoxContainer/PC2Container/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2/to_left" to="CanvasLayer/menu/VBoxContainer/PC2Container" method="_on_to_left_pressed"]
+[connection signal="pressed" from="CanvasLayer/menu/VBoxContainer/PC2Container/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2/to_right" to="CanvasLayer/menu/VBoxContainer/PC2Container" method="_on_to_right_pressed"]

@@ -1,0 +1,94 @@
+{
+  "bodyTypeName": "teen",
+  "url": "https://sanderfrenken.github.io/Universal-LPC-Spritesheet-Character-Generator/#?body=Body_color_light&head=Human_male_light&sex=teen&shadow=none&wound_arm=none&wound_brain=none&wound_ribs=none&wound_mouth=none&wound_eye=none&clothes=Longsleeve_red&overalls=Overalls_maroon&apron=Apron_red&bandages=none&chainmail=none&armour=Leather_red&belt=Belly_belt_charcoal&sash=Narrow_sash_red&legs=Straight_skirt_red&shoes=Boots_black&quiver=none&weapon=none&wrinkes=none&hair=Longknot_black&nose=none&horns=none&fins=none&bandana=none&hat=none&accessory=none&visor=Grated_visor_copper&ammo=none",
+  "spritesheets": "https://sanderfrenken.github.io/Universal-LPC-Spritesheet-Character-Generator/spritesheets/",
+  "version": 1,
+  "datetime": "2023-12-12, 4:30:37 p.m.",
+  "credits": "Authors: bluecarrot16, Evert, TheraHedwig, Benjamin K. Smith (BenCreating), MuffinElZangano, Durrani, Pierre Vigier (pvigier), Eliza Wyatt (ElizaWy), Matthew Krohn (makrohn), Johannes Sj?lund (wulax), Stephen Challener (Redshrike), David Conway Jr. (JaidynReiman), ElizaWy, Nila122, Johannes Sjölund (wulax)\n\n- body/bodies/teen/universal/light.png: by bluecarrot16, Evert, TheraHedwig, Benjamin K. Smith (BenCreating), MuffinElZangano, Durrani, Pierre Vigier (pvigier), Eliza Wyatt (ElizaWy), Matthew Krohn (makrohn), Johannes Sj?lund (wulax), Stephen Challener (Redshrike). License(s): CC-BY-SA 3.0, GPL 3.0. \n    - https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles\n    - https://opengameart.org/content/lpc-medieval-fantasy-character-sprites\n    - https://opengameart.org/content/lpc-ladies\n    - https://opengameart.org/content/lpc-teen-unisex-base-clothes\n    - https://opengameart.org/content/lpc-jump-expanded\n\n- head/heads/human_male/universal/light.png: by bluecarrot16, Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike). License(s): OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0. \n    - https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles\n    - https://opengameart.org/content/lpc-character-bases\n\n- hair/longknot/male/black.png: by David Conway Jr. (JaidynReiman). License(s): CC-BY-SA 3.0, GPL 3.0. \n    - https://opengameart.org/content/lpc-curly-hair-elven-ears-white-cape-with-blue-trim-and-more\n    - https://github.com/jrconway3/Universal-LPC-spritesheet/commit/46ddcf05a0e43e7aa6ffd47d350eef0eb529ac24\n\n- hat/visor/grated/male/copper.png: by bluecarrot16. License(s): CC-BY 3.0, CC-BY 4.0, OGA-BY 3.0, GPL 2.0, GPL 3.0. \n    - https://opengameart.org/content/lpc-helmets\n\n- torso/clothes/longsleeve/teen/red.png: by bluecarrot16, ElizaWy, Stephen Challener (Redshrike). License(s): OGA-BY 3.0, GPL 3.0. \n    - https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles\n    - https://opengameart.org/content/lpc-teen-unisex-base-clothes\n    - http://opengameart.org/content/lpc-clothing-updates\n\n- torso/aprons/overalls/male/maroon.png: by ElizaWy, bluecarrot16. License(s): OGA-BY 3.0, GPL 3.0. \n    - https://opengameart.org/content/lpc-revised-character-basics\n    - http://opengameart.org/content/lpc-clothing-updates\n\n- torso/aprons/apron/male/red.png: by Nila122. License(s): CC-BY-SA 3.0, GPL 2.0, GPL 3.0. \n    - https://opengameart.org/content/lpc-aprons\n\n- torso/armour/leather/male/red.png: by Johannes Sjölund (wulax). License(s): CC-BY-SA 3.0, GPL 3.0. \n    - https://opengameart.org/content/lpc-medieval-fantasy-character-sprites\n    - http://opengameart.org/content/lpc-clothing-updates\n\n- torso/waist/belt_belly/male/charcoal.png: by bluecarrot16, Johannes Sjölund (wulax), Matthew Krohn (makrohn). License(s): CC-BY-SA 3.0, GPL 3.0. \n    - https://opengameart.org/content/lpc-combat-armor-for-women\n    - https://opengameart.org/content/lpc-pirates\n    - https://opengameart.org/content/lpc-santa\n\n- torso/waist/sash_narrow/male/red.png: by bluecarrot16, Nila122. License(s): CC-BY-SA 3.0, GPL 2.0, GPL 3.0. \n    - https://opengameart.org/content/more-lpc-clothes-and-hair\n    - https://opengameart.org/content/lpc-pirates\n\n- legs/skirts/straight/female/red.png: by bluecarrot16, ElizaWy. License(s): OGA-BY 3.0, GPL 3.0. \n    - http://opengameart.org/content/lpc-clothing-updates\n\n- feet/boots/female/black.png: by bluecarrot16, Nila122. License(s): OGA-BY 3.0, CC-BY-SA 3.0, GPL 2.0, GPL 3.0. \n    - https://opengameart.org/content/lpc-clothes-and-hair",
+  "layers": [
+    {
+      "fileName": "body/bodies/teen/universal/light.png",
+      "zPos": 10,
+      "parentName": "body",
+      "name": "Body color",
+      "variant": "light"
+    },
+    {
+      "fileName": "legs/skirts/straight/female/red.png",
+      "zPos": 20,
+      "parentName": "legs",
+      "name": "Straight skirt",
+      "variant": "red"
+    },
+    {
+      "fileName": "feet/boots/female/black.png",
+      "zPos": 25,
+      "parentName": "shoes",
+      "name": "Boots",
+      "variant": "black"
+    },
+    {
+      "fileName": "torso/clothes/longsleeve/teen/red.png",
+      "zPos": 35,
+      "parentName": "clothes",
+      "name": "Longsleeve",
+      "variant": "red"
+    },
+    {
+      "fileName": "torso/aprons/overalls/male/maroon.png",
+      "zPos": 38,
+      "parentName": "overalls",
+      "name": "Overalls",
+      "variant": "maroon"
+    },
+    {
+      "fileName": "torso/aprons/apron/male/red.png",
+      "zPos": 40,
+      "parentName": "apron",
+      "name": "Apron",
+      "variant": "red"
+    },
+    {
+      "fileName": "torso/armour/leather/male/red.png",
+      "zPos": 60,
+      "parentName": "armour",
+      "name": "Leather",
+      "variant": "red"
+    },
+    {
+      "fileName": "torso/waist/sash_narrow/male/red.png",
+      "zPos": 65,
+      "parentName": "sash",
+      "name": "Narrow sash",
+      "variant": "red"
+    },
+    {
+      "fileName": "torso/waist/belt_belly/male/charcoal.png",
+      "zPos": 70,
+      "parentName": "belt",
+      "name": "Belly belt",
+      "variant": "charcoal"
+    },
+    {
+      "fileName": "head/heads/human_male/universal/light.png",
+      "zPos": 100,
+      "parentName": "head",
+      "name": "Human male",
+      "variant": "light"
+    },
+    {
+      "fileName": "hair/longknot/male/black.png",
+      "zPos": 120,
+      "parentName": "hair",
+      "name": "Longknot",
+      "variant": "black"
+    },
+    {
+      "fileName": "hat/visor/grated/male/copper.png",
+      "zPos": 132,
+      "parentName": "visor",
+      "name": "Grated visor",
+      "variant": "copper"
+    }
+  ]
+}

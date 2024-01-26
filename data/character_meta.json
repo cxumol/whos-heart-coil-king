@@ -1,0 +1,15 @@
+{
+    "name": ["李火旺", "红中李火旺"],
+    "res": {
+        "Banner": {
+            "dir": "asset/banner",
+            "prefix": "banner",
+            "ext": ["png", "jpg"]
+        },
+        "SpriteSheet": {
+            "dir": "art",
+            "prefix": "PC",
+            "ext": ["png", "jpg"]
+        }
+    }
+}

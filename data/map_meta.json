@@ -1,0 +1,10 @@
+{
+	"name": ["清风观", "青丘"],
+	"res": {
+		"Background": {
+			"dir": "asset/background",
+			"prefix": "lvlbg",
+			"ext": ["png", "jpg"]
+		}
+	}
+}

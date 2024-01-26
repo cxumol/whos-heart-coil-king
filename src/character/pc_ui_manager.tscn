@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://kdsv66b6gd6i"]
+
+[ext_resource type="Script" path="res://src/character/pc_ui_manager.gd" id="1_dc8rq"]
+
+[node name="PCUIManager" type="Control"]
+z_index = 100
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_dc8rq")
+heal_color = Color(0.513726, 1, 0.482353, 1)
+damage_color = Color(1, 0.286275, 0.227451, 1)
+mana_refill_color = Color(1, 0.937255, 0.6, 1)
+mana_consume_color = Color(0.419608, 0.603922, 1, 1)

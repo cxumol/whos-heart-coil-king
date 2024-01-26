@@ -1,0 +1,30 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://bnjahp1i1jmp7"]
+
+[ext_resource type="Texture2D" uid="uid://dn5sj4pued0is" path="res://addons/kenney_particle_pack/star_03.png" id="1_7e528"]
+[ext_resource type="Texture2D" uid="uid://c0s53h2j2bhin" path="res://addons/kenney_particle_pack/star_05.png" id="2_nipm0"]
+[ext_resource type="Texture2D" uid="uid://b6kprqk51yr57" path="res://addons/kenney_particle_pack/star_01.png" id="3_4d4yx"]
+[ext_resource type="Texture2D" uid="uid://d0xaj7fq1u85i" path="res://addons/kenney_particle_pack/star_02.png" id="4_crsfj"]
+[ext_resource type="Texture2D" uid="uid://bb74ngv8loyhn" path="res://addons/kenney_particle_pack/star_04.png" id="5_myl63"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7e528")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_nipm0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4d4yx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_crsfj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_myl63")
+}],
+"loop": true,
+"name": &"star",
+"speed": 24.0
+}]

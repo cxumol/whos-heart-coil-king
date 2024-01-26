@@ -1,0 +1,21 @@
+{
+	"李火旺":{
+		"group":"心素",
+		"manaType":"迷惘",
+		"manaStrategy":{
+			"delta":4
+		},
+		"manaMax":100,
+		"health":100
+	}, 
+	"红中李火旺":{
+		"group":"坐忘道",
+		"manaType":"非罡",
+		"manaStrategy":{
+			"delta":2,
+			"attack":4
+		},
+		"manaMax":100,
+		"health":100
+	}
+}

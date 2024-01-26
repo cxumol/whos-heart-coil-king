@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://brikouiefx8nv"]
+
+[ext_resource type="Theme" uid="uid://dkyw0xjrwcyub" path="res://src/ui_theme.tres" id="1_nsvo2"]
+[ext_resource type="Script" path="res://src/character/UIFloatHint.gd" id="2_au1x0"]
+
+[node name="Label" type="Label"]
+offset_left = -43.0
+offset_top = -85.0
+offset_right = -3.0
+offset_bottom = -34.0
+theme = ExtResource("1_nsvo2")
+theme_override_colors/font_color = Color(1, 0.556863, 0.494118, 1)
+theme_override_colors/font_outline_color = Color(0.717647, 0.717647, 0.717647, 1)
+script = ExtResource("2_au1x0")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
