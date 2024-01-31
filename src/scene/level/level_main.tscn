@@ -1,11 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://kh82dmuqkeoc"]
+[gd_scene load_steps=18 format=3 uid="uid://kh82dmuqkeoc"]
 
 [ext_resource type="Script" path="res://src/scene/level/level_main.gd" id="1_wkslw"]
 [ext_resource type="Texture2D" uid="uid://daxkyotxfbo2n" path="res://asset/background/lvlbg_清风观_.jpg" id="2_yh8d3"]
 [ext_resource type="PackedScene" uid="uid://c5x5h7bjgmb8u" path="res://src/character/pc.tscn" id="3_cftad"]
+[ext_resource type="Theme" uid="uid://dkyw0xjrwcyub" path="res://src/ui_theme.tres" id="4_ugc1s"]
+[ext_resource type="Texture2D" uid="uid://b3bnry7ogxoyx" path="res://asset/border/panel-border-015.png" id="5_nruuo"]
+[ext_resource type="Texture2D" uid="uid://cfnop32ny00t" path="res://asset/border/panel-border-009.png" id="6_l8x8t"]
+[ext_resource type="Texture2D" uid="uid://cqpv64lxo5th3" path="res://src/scene/battle/hud_HP_gradient_texture_2d.tres" id="6_xk3kc"]
+[ext_resource type="Texture2D" uid="uid://ds353r6ov5t6h" path="res://asset/icon/weapon/dice-three.svg" id="7_2j5a5"]
+[ext_resource type="Texture2D" uid="uid://xu11mw3oxuty" path="res://src/scene/battle/hud_MP_gradient_texture_2d.tres" id="7_ge0qp"]
+[ext_resource type="Texture2D" uid="uid://bv3b5c67bo1d1" path="res://asset/icon/weapon/bell-ringing.svg" id="8_1sm72"]
+[ext_resource type="Texture2D" uid="uid://dxxww30827av2" path="res://asset/icon/weapon/历史.svg" id="9_4so4q"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6lqep"]
-distance = -370.59
+distance = -320.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_15jre"]
 normal = Vector2(-1, 0)
@@ -18,6 +26,13 @@ distance = -660.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mb3bb"]
 size = Vector2(1329, 16)
 
+[sub_resource type="Gradient" id="Gradient_mjhhn"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.252028, 0.252028, 0.252028, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0xov8"]
+gradient = SubResource("Gradient_mjhhn")
+
 [node name="LevelMain" type="Node"]
 script = ExtResource("1_wkslw")
 
@@ -26,33 +41,6 @@ unique_name_in_owner = true
 texture = ExtResource("2_yh8d3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="HUD" type="CanvasLayer" parent="."]
-
-[node name="Timer" type="Label" parent="HUD"]
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="PC1" type="Control" parent="HUD"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="HPBar" type="TextureProgressBar" parent="HUD/PC1"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="MP1Bar" type="TextureProgressBar" parent="HUD/PC1"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="MP2Bar" type="TextureProgressBar" parent="HUD/PC1"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
 
 [node name="PhysicalEnv" type="Node" parent="."]
 
@@ -81,10 +69,423 @@ position = Vector2(0.5, 352)
 shape = SubResource("RectangleShape2D_mb3bb")
 disabled = true
 
-[node name="PC1" parent="." node_paths=PackedStringArray("opponent") instance=ExtResource("3_cftad")]
+[node name="PC1" parent="." node_paths=PackedStringArray("opponent", "HUD") instance=ExtResource("3_cftad")]
 position = Vector2(-315, 132)
 opponent = NodePath("../PC2")
+HUD = NodePath("../HUD/HBoxContainer/HUD1")
 
-[node name="PC2" parent="." node_paths=PackedStringArray("opponent") instance=ExtResource("3_cftad")]
+[node name="PC2" parent="." node_paths=PackedStringArray("opponent", "HUD") instance=ExtResource("3_cftad")]
 position = Vector2(315, 132)
 opponent = NodePath("../PC1")
+HUD = NodePath("../HUD/HBoxContainer/HUD2")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD"]
+anchors_preset = -1
+anchor_left = -0.5
+anchor_top = -0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_ugc1s")
+
+[node name="HUD1" type="Control" parent="HUD/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/HBoxContainer/HUD1"]
+clip_contents = true
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 115.0
+grow_vertical = 2
+
+[node name="Ceiling" type="VBoxContainer" parent="HUD/HBoxContainer/HUD1/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayerLable" type="Label" parent="HUD/HBoxContainer/HUD1/VBoxContainer/Ceiling"]
+layout_mode = 2
+text = "Player 1"
+
+[node name="HPBar" type="TextureProgressBar" parent="HUD/HBoxContainer/HUD1/VBoxContainer/Ceiling"]
+layout_mode = 2
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 5
+stretch_margin_top = 15
+stretch_margin_right = 5
+stretch_margin_bottom = 15
+texture_under = SubResource("GradientTexture1D_0xov8")
+texture_over = ExtResource("5_nruuo")
+texture_progress = ExtResource("6_xk3kc")
+tint_over = Color(0.529412, 0.529412, 0.529412, 0.392157)
+
+[node name="Floor" type="VBoxContainer" parent="HUD/HBoxContainer/HUD1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="Line1" type="HBoxContainer" parent="HUD/HBoxContainer/HUD1/VBoxContainer/Floor"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ManaAllContainer" type="HBoxContainer" parent="HUD/HBoxContainer/HUD1/VBoxContainer/Floor/Line1"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ManaLabel" type="Label" parent="HUD/HBoxContainer/HUD1/VBoxContainer/Floor/Line1/ManaAllContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "法力"
+
+[node name="MPBar" type="TextureProgressBar" parent="HUD/HBoxContainer/HUD1/VBoxContainer/Floor/Line1/ManaAllContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 5
+stretch_margin_top = 15
+stretch_margin_right = 5
+stretch_margin_bottom = 15
+texture_over = ExtResource("5_nruuo")
+texture_progress = ExtResource("7_ge0qp")
+tint_over = Color(0.529412, 0.529412, 0.529412, 0.392157)
+
+[node name="Weapon1" type="NinePatchRect" parent="HUD/HBoxContainer/HUD1/VBoxContainer/Floor/Line1"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("6_l8x8t")
+draw_center = false
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/HBoxContainer/HUD1/VBoxContainer/Floor/Line1/Weapon1"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_right = 30.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 2
+
+[node name="Label" type="Label" parent="HUD/HBoxContainer/HUD1/VBoxContainer/Floor/Line1/Weapon1/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "1"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HUD/HBoxContainer/HUD1/VBoxContainer/Floor/Line1/Weapon1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+texture = ExtResource("7_2j5a5")
+stretch_mode = 4
+
+[node name="Weapon2" type="NinePatchRect" parent="HUD/HBoxContainer/HUD1/VBoxContainer/Floor/Line1"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("6_l8x8t")
+draw_center = false
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/HBoxContainer/HUD1/VBoxContainer/Floor/Line1/Weapon2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_right = 30.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 2
+
+[node name="Label" type="Label" parent="HUD/HBoxContainer/HUD1/VBoxContainer/Floor/Line1/Weapon2/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "2
+"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HUD/HBoxContainer/HUD1/VBoxContainer/Floor/Line1/Weapon2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+texture = ExtResource("8_1sm72")
+stretch_mode = 4
+
+[node name="Line2" type="HBoxContainer" parent="HUD/HBoxContainer/HUD1/VBoxContainer/Floor"]
+layout_mode = 2
+
+[node name="ManaLabel1" type="Label" parent="HUD/HBoxContainer/HUD1/VBoxContainer/Floor/Line2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "蓄力1"
+
+[node name="MPBar1" type="TextureProgressBar" parent="HUD/HBoxContainer/HUD1/VBoxContainer/Floor/Line2"]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 5
+stretch_margin_top = 15
+stretch_margin_right = 5
+stretch_margin_bottom = 15
+texture_over = ExtResource("5_nruuo")
+texture_progress = ExtResource("7_ge0qp")
+tint_over = Color(0.529412, 0.529412, 0.529412, 0.392157)
+
+[node name="ManaLabel2" type="Label" parent="HUD/HBoxContainer/HUD1/VBoxContainer/Floor/Line2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "蓄力2"
+
+[node name="MPBar2" type="TextureProgressBar" parent="HUD/HBoxContainer/HUD1/VBoxContainer/Floor/Line2"]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 5
+stretch_margin_top = 15
+stretch_margin_right = 5
+stretch_margin_bottom = 15
+texture_over = ExtResource("5_nruuo")
+texture_progress = ExtResource("7_ge0qp")
+tint_over = Color(0.529412, 0.529412, 0.529412, 0.392157)
+
+[node name="HUD2" type="Control" parent="HUD/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/HBoxContainer/HUD2"]
+clip_contents = true
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -182.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Ceiling" type="VBoxContainer" parent="HUD/HBoxContainer/HUD2/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayerLable" type="Label" parent="HUD/HBoxContainer/HUD2/VBoxContainer/Ceiling"]
+layout_mode = 2
+text = "Player 2"
+horizontal_alignment = 2
+
+[node name="HPBar" type="TextureProgressBar" parent="HUD/HBoxContainer/HUD2/VBoxContainer/Ceiling"]
+layout_mode = 2
+value = 100.0
+fill_mode = 1
+nine_patch_stretch = true
+stretch_margin_left = 5
+stretch_margin_top = 15
+stretch_margin_right = 5
+stretch_margin_bottom = 15
+texture_over = ExtResource("5_nruuo")
+texture_progress = ExtResource("6_xk3kc")
+tint_over = Color(0.529412, 0.529412, 0.529412, 0.392157)
+
+[node name="Floor" type="VBoxContainer" parent="HUD/HBoxContainer/HUD2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="Line1" type="HBoxContainer" parent="HUD/HBoxContainer/HUD2/VBoxContainer/Floor"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Weapon1" type="NinePatchRect" parent="HUD/HBoxContainer/HUD2/VBoxContainer/Floor/Line1"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("6_l8x8t")
+draw_center = false
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/HBoxContainer/HUD2/VBoxContainer/Floor/Line1/Weapon1"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_right = 30.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 2
+
+[node name="Label" type="Label" parent="HUD/HBoxContainer/HUD2/VBoxContainer/Floor/Line1/Weapon1/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "1"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HUD/HBoxContainer/HUD2/VBoxContainer/Floor/Line1/Weapon1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+texture = ExtResource("9_4so4q")
+stretch_mode = 4
+
+[node name="Weapon2" type="NinePatchRect" parent="HUD/HBoxContainer/HUD2/VBoxContainer/Floor/Line1"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("6_l8x8t")
+draw_center = false
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/HBoxContainer/HUD2/VBoxContainer/Floor/Line1/Weapon2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_right = 30.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 2
+
+[node name="Label" type="Label" parent="HUD/HBoxContainer/HUD2/VBoxContainer/Floor/Line1/Weapon2/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "2
+"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HUD/HBoxContainer/HUD2/VBoxContainer/Floor/Line1/Weapon2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+texture = ExtResource("8_1sm72")
+stretch_mode = 4
+
+[node name="ManaAllContainer" type="HBoxContainer" parent="HUD/HBoxContainer/HUD2/VBoxContainer/Floor/Line1"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ManaLabel" type="Label" parent="HUD/HBoxContainer/HUD2/VBoxContainer/Floor/Line1/ManaAllContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "法力"
+
+[node name="MPBar" type="TextureProgressBar" parent="HUD/HBoxContainer/HUD2/VBoxContainer/Floor/Line1/ManaAllContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 100.0
+fill_mode = 1
+nine_patch_stretch = true
+stretch_margin_left = 5
+stretch_margin_top = 15
+stretch_margin_right = 5
+stretch_margin_bottom = 15
+texture_over = ExtResource("5_nruuo")
+texture_progress = ExtResource("7_ge0qp")
+tint_over = Color(0.529412, 0.529412, 0.529412, 0.392157)
+
+[node name="Line2" type="HBoxContainer" parent="HUD/HBoxContainer/HUD2/VBoxContainer/Floor"]
+layout_mode = 2
+
+[node name="ManaLabel1" type="Label" parent="HUD/HBoxContainer/HUD2/VBoxContainer/Floor/Line2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "蓄力1"
+
+[node name="MPBar1" type="TextureProgressBar" parent="HUD/HBoxContainer/HUD2/VBoxContainer/Floor/Line2"]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 100.0
+fill_mode = 1
+nine_patch_stretch = true
+stretch_margin_left = 5
+stretch_margin_top = 15
+stretch_margin_right = 5
+stretch_margin_bottom = 15
+texture_over = ExtResource("5_nruuo")
+texture_progress = ExtResource("7_ge0qp")
+tint_over = Color(0.529412, 0.529412, 0.529412, 0.392157)
+
+[node name="ManaLabel2" type="Label" parent="HUD/HBoxContainer/HUD2/VBoxContainer/Floor/Line2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "蓄力2"
+
+[node name="MPBar2" type="TextureProgressBar" parent="HUD/HBoxContainer/HUD2/VBoxContainer/Floor/Line2"]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 100.0
+fill_mode = 1
+nine_patch_stretch = true
+stretch_margin_left = 11
+stretch_margin_top = 15
+stretch_margin_right = 5
+stretch_margin_bottom = 15
+texture_over = ExtResource("5_nruuo")
+texture_progress = ExtResource("7_ge0qp")
+tint_over = Color(0.529412, 0.529412, 0.529412, 0.392157)

@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var allow_input_to_move:bool = true
 @export var allow_attack:bool = true
 @export var opponent:CharacterBody2D
+@export var HUD:Control
 
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var animation_tree : AnimationTree = $AnimationTree
@@ -31,7 +32,7 @@ func _ready():
 		get_tree().quit()
 		
 	## If it's enemy, assign fsm as EnemyStateMachine
-	if $PCData.is_player2 and not Global.is_multiplayer:
+	if $PCData.is_PVE_enemy:
 		#enemy_target = get_parent().get_tree().get_first_node_in_group("Player")
 		enemy_target = opponent
 		fsm = $EnemyStateMachine
@@ -122,3 +123,5 @@ func enemy_move_towards_player(delta):
 func hurt_feedback(step:=10):
 	position.x+=sign(position.x-opponent.position.x)*step
 	#move_toward(position.x, position.x+sign(position.x-opponent.position.x)*step, SPEED*0.8)
+
+
