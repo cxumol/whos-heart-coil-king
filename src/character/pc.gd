@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal dead
+
 @export var SPEED : float= 600.0
 @export var JUMP_VELOCITY : float= -600.0
 @export var AIR_JUMP_VELOCITY : float= -300.0
@@ -125,3 +127,5 @@ func hurt_feedback(step:=10):
 	#move_toward(position.x, position.x+sign(position.x-opponent.position.x)*step, SPEED*0.8)
 
 
+func _on_pc_data_dead():
+	emit_signal("dead")

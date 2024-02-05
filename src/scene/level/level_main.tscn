@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://kh82dmuqkeoc"]
+[gd_scene load_steps=24 format=3 uid="uid://kh82dmuqkeoc"]
 
 [ext_resource type="Script" path="res://src/scene/level/level_main.gd" id="1_wkslw"]
 [ext_resource type="Texture2D" uid="uid://daxkyotxfbo2n" path="res://asset/background/lvlbg_清风观_.jpg" id="2_yh8d3"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://xu11mw3oxuty" path="res://src/scene/battle/hud_MP_gradient_texture_2d.tres" id="7_ge0qp"]
 [ext_resource type="Texture2D" uid="uid://bv3b5c67bo1d1" path="res://asset/icon/weapon/bell-ringing.svg" id="8_1sm72"]
 [ext_resource type="Texture2D" uid="uid://dxxww30827av2" path="res://asset/icon/weapon/历史.svg" id="9_4so4q"]
+[ext_resource type="Texture2D" uid="uid://dwam34vk7i7u" path="res://asset/icon/checkmark.png" id="12_o3iki"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6lqep"]
 distance = -320.0
@@ -32,6 +33,34 @@ colors = PackedColorArray(0.252028, 0.252028, 0.252028, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_0xov8"]
 gradient = SubResource("Gradient_mjhhn")
+
+[sub_resource type="InputEventKey" id="InputEventKey_a7cfv"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="InputEventKey" id="InputEventKey_5fnxm"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="InputEventKey" id="InputEventKey_iw0by"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_fn7xu"]
+events = [SubResource("InputEventKey_a7cfv"), SubResource("InputEventKey_5fnxm"), SubResource("InputEventKey_iw0by")]
+
+[sub_resource type="GDScript" id="GDScript_oqwll"]
+script/source = "extends Button
+
+
+
+func _on_pressed():
+	# 重启游戏时解冻
+	get_tree().paused=false 
+	get_tree().change_scene_to_file(\"res://src/scene/menu/level_setup.tscn\")
+	
+"
 
 [node name="LevelMain" type="Node"]
 script = ExtResource("1_wkslw")
@@ -78,6 +107,8 @@ HUD = NodePath("../HUD/HBoxContainer/HUD1")
 position = Vector2(315, 132)
 opponent = NodePath("../PC1")
 HUD = NodePath("../HUD/HBoxContainer/HUD2")
+
+[node name="LevelData" type="Node" parent="."]
 
 [node name="HUD" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -489,3 +520,89 @@ stretch_margin_bottom = 15
 texture_over = ExtResource("5_nruuo")
 texture_progress = ExtResource("7_ge0qp")
 tint_over = Color(0.529412, 0.529412, 0.529412, 0.392157)
+
+[node name="settlementScreen" type="CanvasLayer" parent="."]
+process_mode = 2
+visible = false
+offset = Vector2(-640, -360)
+transform = Transform2D(1, 0, 0, 1, -640, -360)
+follow_viewport_enabled = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="settlementScreen"]
+custom_minimum_size = Vector2(640, 360)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("4_ugc1s")
+
+[node name="Panel" type="Panel" parent="settlementScreen/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="settlementScreen/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -72.0
+offset_right = 72.0
+offset_bottom = 180.0
+grow_horizontal = 2
+theme = ExtResource("4_ugc1s")
+
+[node name="MarginContainer" type="MarginContainer" parent="settlementScreen/VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 30
+
+[node name="Title" type="Label" parent="settlementScreen/VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+text = "结算画面"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="settlementScreen/VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 30
+
+[node name="Content" type="Label" parent="settlementScreen/VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "结算画面内容
+"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="settlementScreen/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -102.0
+offset_top = -180.0
+offset_right = 102.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_ugc1s")
+
+[node name="MarginContainer" type="MarginContainer" parent="settlementScreen/VBoxContainer/Panel/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_top = 30
+
+[node name="MarginContainer2" type="MarginContainer" parent="settlementScreen/VBoxContainer/Panel/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_top = 30
+
+[node name="Button" type="Button" parent="settlementScreen/VBoxContainer/Panel/VBoxContainer2"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_fn7xu")
+text = "好的"
+icon = ExtResource("12_o3iki")
+script = SubResource("GDScript_oqwll")
+
+[connection signal="dead" from="PC1" to="." method="_on_pc_1_dead"]
+[connection signal="dead" from="PC2" to="." method="_on_pc_2_dead"]
+[connection signal="pressed" from="settlementScreen/VBoxContainer/Panel/VBoxContainer2/Button" to="settlementScreen/VBoxContainer/Panel/VBoxContainer2/Button" method="_on_pressed"]
